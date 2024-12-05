@@ -6,6 +6,8 @@ const Home=()=>{
             <ul>
                 <li><Link to="/counter">Coounter App</Link></li>
                 <li><Link to="/stopwatch">Stop Watch App</Link></li>
+                <li><Link to="/refex">Use Refex</Link></li>
+                
             </ul>
         </div>
     )

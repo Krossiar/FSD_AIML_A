@@ -28,8 +28,11 @@ const Stopwatch=()=>{
 
     function timeFormat(time){
         const hours =Math.floor(time/3600);
+        const hr=(hours<10)?('0'+hours):hours
         const min=Math.floor((time/3600)/360);
+        const m=(min<10)?('0'+min):min;
         const sec =time%60;
+        const s=(sec<10)?('0'+sec):sec;
         return `${hours}<10?0${hours}:${hours}:${min}:${sec}`
     }
     return (
