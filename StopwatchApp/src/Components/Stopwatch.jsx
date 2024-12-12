@@ -33,7 +33,9 @@ const Stopwatch=()=>{
         const m=(min<10)?('0'+min):min;
         const sec =time%60;
         const s=(sec<10)?('0'+sec):sec;
-        return `${hours}<10?0${hours}:${hours}:${min}:${sec}`
+        return  `${hours < 10 ? '0' + hours : hours}: +
+        ${min< 10 ? '0' + min : min}: +
+        ${sec < 10 ? '0' + sec: sec}`
     }
     return (
         <div>
