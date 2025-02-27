@@ -57,6 +57,36 @@ app.post("/product",(req,res)=>{
         message: "Product Created Successfully",
     })}
 })
+app.patch("/editproduct/:id",(req,res)=>{
+    const pid=req.params.id;
+    const {title,price,quantity}=req.body;
+    if(!title ||!price||!quantity){
+        res.status(400).json({status:"Fail",message: "All Fields requires except id"})
+    }
+    else{
+    const index=products.findIndex(ind=>ind.id==pid)
+    if(index!=-1){
+    products[index].title=title
+    products[index].price=price
+    products[index].quantity=quantity
+    res.status(200).json({status:"success",message: "Data edited successfully",data:products[index]})}
+    else{
+        res.status(400).json({status:"Fail",message: "Product not found"})
+    }}
+})
+app.delete("/deleteproduct/:id",(req,res)=>{
+    const pid=req.params.id;
+    const index=products.findIndex(ind=>ind.id==pid)
+    if(index==-1){
+        res.status(400).json({status:"Fail",message: "Product not found"})
+    }
+    else{
+        products.splice(index,1);
+        res.status(200).json({status:"Success",message: "Product deleted successfully",data:products})
+    }
+
+})
+
 app.listen(port,(err)=>{
     try{
         if(err) throw err
